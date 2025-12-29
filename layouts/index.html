@@ -101,7 +101,12 @@
 
     <!-- Experience Section -->
     {{ $experienceData := index site.Data .Language.Lang "experience" }}
-    {{ $experience := cond (and $experienceData $experienceData.experience) $experienceData.experience site.Params.experience }}
+    {{ $experience := site.Params.experience }}
+    {{ if $experienceData }}
+        {{ if $experienceData.experience }}
+            {{ $experience = $experienceData.experience }}
+        {{ end }}
+    {{ end }}
 
     {{ with $experience }}
     <section>
@@ -140,7 +145,12 @@
 
     <!-- Projects Section -->
     {{ $projectsData := index site.Data .Language.Lang "projects" }}
-    {{ $projects := cond (and $projectsData $projectsData.projects) $projectsData.projects site.Params.projects }}
+    {{ $projects := site.Params.projects }}
+    {{ if $projectsData }}
+        {{ if $projectsData.projects }}
+            {{ $projects = $projectsData.projects }}
+        {{ end }}
+    {{ end }}
 
     {{ with $projects }}
     <section class="mt-12 md:mt-20 mb-12 md:mb-20">
@@ -188,7 +198,12 @@
 
     <!-- Blog Section -->
     {{ $blogsData := index site.Data .Language.Lang "blogs" }}
-    {{ $blogs := cond (and $blogsData $blogsData.blogs) $blogsData.blogs site.Params.blogs }}
+    {{ $blogs := site.Params.blogs }}
+    {{ if $blogsData }}
+        {{ if $blogsData.blogs }}
+            {{ $blogs = $blogsData.blogs }}
+        {{ end }}
+    {{ end }}
     
     {{ with $blogs }}
     <section class="mt-20 mb-20">
