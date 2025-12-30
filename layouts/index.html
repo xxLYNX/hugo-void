@@ -14,7 +14,7 @@
     
     {{ with $author }}
     <section class="mb-16">
-        <div class="max-w-3xl ml-0 p-4 pb-2 border border-border-primary-light dark:border-border-primary-dark rounded-lg bg-bg-secondary-light dark:bg-bg-secondary-dark shadow-lg relative">
+        <div class="max-w-3xl ml-0 p-4 pb-2 border border-gray-500 dark:border-border-primary-dark rounded-lg bg-bg-secondary-light dark:bg-bg-secondary-dark shadow-lg relative">
             <div class="flex flex-col md:flex-row gap-6 items-start">
                 {{ with .profile_image }}
                 <div class="flex-shrink-0">
@@ -115,14 +115,7 @@
     {{ end }}
 
     <!-- Projects Section -->
-    {{ $projectsData := index site.Data .Language.Lang "projects" }}
-    {{ $projects := site.Params.projects }}
-    {{ if $projectsData }}
-        {{ if $projectsData.projects }}
-            {{ $projects = $projectsData.projects }}
-        {{ end }}
-    {{ end }}
-
+    {{ $projects := where (where site.RegularPages "Section" "projects") "Language.Lang" .Language.Lang }}
     {{ with $projects }}
     <section class="mt-12 md:mt-20 mb-12 md:mb-20">
         <div class="flex justify-between items-center mb-6 md:mb-8">
@@ -133,22 +126,21 @@
             <div class="project-card relative overflow-hidden rounded-lg bg-[#121212] border border-gray-700 transition-all duration-300 group">
                 <div class="aspect-w-16 aspect-h-9 overflow-hidden relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 z-10"></div>
-                    <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 z-20"></div>
                     
                     <!-- Content that moves up on hover -->
                     <div class="absolute inset-0 z-30 p-4 pb-3 md:p-6 md:pb-4 flex flex-col justify-end transform transition-transform duration-500 translate-y-0 group-hover:translate-y-[-20px]">
-                        <h3 class="text-xl md:text-2xl font-bold mb-1.5 md:mb-2 text-white line-clamp-2">{{ .title }}</h3>
+                        <h3 class="text-xl md:text-2xl font-bold mb-1.5 md:mb-2 text-white line-clamp-2">{{ .Title }}</h3>
                         <div class="hidden sm:flex flex-wrap gap-1 md:gap-2 mb-1.5 md:mb-3">
-                            {{ $techs := split .tech "," }}
-                            {{ range $tech := $techs }}
-                            <span class="px-1.5 md:px-2 py-0.5 bg-black/30 backdrop-blur-sm rounded-md text-[10px] md:text-xs font-medium text-white">{{ $tech }}</span>
+                            {{ range .Params.tags }}
+                            <span class="px-1.5 md:px-2 py-0.5 bg-black/30 backdrop-blur-sm rounded-md text-[10px] md:text-xs font-medium text-white">{{ . }}</span>
                             {{ end }}
                         </div>
-                        <p class="hidden md:block text-sm text-white mb-3 line-clamp-3 md:line-clamp-4">{{ .description }}</p>
+                        <p class="hidden md:block text-sm text-white mb-3 line-clamp-3 md:line-clamp-4">{{ .Params.description }}</p>
                         
                         <!-- Learn More button -->
-                        <a href="{{ .link }}" class="bg-white/90 backdrop-blur-sm hover:bg-white text-black text-xs md:text-sm font-medium py-1 md:py-1.5 px-2 md:px-3 rounded-md inline-block transition-all duration-300 transform opacity-100 md:opacity-0 group-hover:opacity-100 w-fit flex items-center shadow-lg hover:shadow-xl">
+                        <a href="{{ .RelPermalink }}" class="bg-white/90 backdrop-blur-sm hover:bg-white text-black text-xs md:text-sm font-medium py-1 md:py-1.5 px-2 md:px-3 rounded-md inline-block transition-all duration-300 transform opacity-100 md:opacity-0 group-hover:opacity-100 w-fit flex items-center shadow-lg hover:shadow-xl">
                             {{ T "learnMore" }}
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -164,7 +156,7 @@
         </div>
     </section>
     {{ else }}
-    {{ warnf "No project data found for language %q. Please define either data/%s/projects.(yaml|toml|json) or params.projects in config." .Language.Lang .Language.Lang }}
+    {{ warnf "No project content found. Please add projects to content/%s/projects/" .Language.Lang }}
     {{ end }}
 
     <!-- Blog Section -->
@@ -207,10 +199,6 @@
 </div>
 
 <style>
-.max-w-3xl {
-    border-color: rgba(75, 85, 99, 0.7); 
-}
-
 .project-card {
     height: 100%;
     display: flex;

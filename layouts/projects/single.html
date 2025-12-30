@@ -1,0 +1,151 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <div class="mb-8">
+        <a href="{{ "projects/" | absLangURL }}" class="inline-flex items-center text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-200 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Projects
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-text-primary-light dark:text-text-primary-dark">{{ .Title }}</h1>
+        <div class="flex items-center gap-4 text-text-secondary-light dark:text-text-secondary-dark text-sm mb-6">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ if .Lastmod }}
+            <span>•</span>
+            <span>Updated {{ .Lastmod.Format "January 2, 2006" }}</span>
+            {{ end }}
+        </div>
+        
+        <!-- Tags -->
+        {{ with .Params.tags }}
+        <div class="flex flex-wrap gap-2 mb-6">
+            {{ range . }}
+            <span class="px-3 py-1 text-sm bg-bg-primary-light dark:bg-bg-tertiary-dark text-text-secondary-light dark:text-text-secondary-dark border border-border-primary-light dark:border-border-primary-dark rounded-md">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+        
+        <!-- Links -->
+        <div class="flex flex-wrap gap-3 mb-8">
+            {{ with .Params.github }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-bg-primary-light dark:bg-bg-secondary-dark border border-border-primary-light dark:border-border-primary-dark rounded-md hover:border-accent-light dark:hover:border-accent-dark transition-all duration-300 text-text-primary-light dark:text-text-primary-dark">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Code
+            </a>
+            {{ end }}
+            {{ with .Params.demo }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-accent-light dark:bg-accent-dark text-white rounded-md hover:opacity-90 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                View Demo
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Featured Image -->
+    {{ with .Params.image }}
+    <div class="mb-12 rounded-lg overflow-hidden border border-border-primary-light dark:border-border-primary-dark">
+        <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-auto">
+    </div>
+    {{ end }}
+
+    <!-- Content -->
+    <article class="prose prose-lg prose-neutral dark:prose-invert max-w-none">
+        {{ .Content }}
+    </article>
+
+    <!-- Back to projects -->
+    <div class="mt-12 pt-8 border-t border-border-primary-light dark:border-border-primary-dark">
+        <a href="{{ "projects/" | absLangURL }}" class="inline-flex items-center text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Projects
+        </a>
+    </div>
+</div>
+
+<style>
+    .prose {
+        color: #4b5563;
+        font-size: 1.125rem;
+        line-height: 1.75;
+    }
+    html.dark .prose {
+        color: #9ca3af;
+    }
+    .prose h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1f2937;
+    }
+    html.dark .prose h2 {
+        color: #f3f4f6;
+    }
+    .prose h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1f2937;
+    }
+    html.dark .prose h3 {
+        color: #f3f4f6;
+    }
+    .prose p {
+        margin-bottom: 1.25rem;
+    }
+    .prose ul, .prose ol {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .prose li {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .prose code {
+        background-color: #f3f4f6;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+    }
+    html.dark .prose code {
+        background-color: #374151;
+    }
+    .prose pre {
+        background-color: #1f2937;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .prose pre code {
+        background-color: transparent;
+        padding: 0;
+        color: #e5e7eb;
+    }
+    .prose a {
+        color: #0284c7;
+        text-decoration: underline;
+        transition: color 0.2s;
+    }
+    .prose a:hover {
+        color: #0369a1;
+    }
+    html.dark .prose a {
+        color: #0ea5e9;
+    }
+    html.dark .prose a:hover {
+        color: #38bdf8;
+    }
+</style>
+{{ end }}
