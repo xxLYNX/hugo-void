@@ -170,24 +170,11 @@
             {{ range first 3 ($blogs.ByDate.Reverse) }}
             <article class="group">
                 <p class="text-gray-400 text-sm mb-1">{{ .Date.Format "January 2, 2006" }}</p>
-                {{ if .Params.externalUrl }}
-                <!-- External blog post -->
-                <a href="{{ .Params.externalUrl }}" class="block group" target="_blank" rel="noopener noreferrer">
-                    <h3 class="inline-flex items-center text-xl font-medium text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-200 mb-3">
-                        {{ .Title }}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 opacity-70 group-hover:opacity-100 transition-opacity duration-200">
-                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                        </svg>
-                    </h3>
-                </a>
-                {{ else }}
-                <!-- Internal blog post -->
                 <a href="{{ .RelPermalink }}" class="block group">
                     <h3 class="text-xl font-medium text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-200 mb-3">
                         {{ .Title }}
                     </h3>
                 </a>
-                {{ end }}
                 <p class="text-gray-400">{{ .Params.summary }}</p>
             </article>
             {{ end }}
