@@ -81,7 +81,10 @@
                         </div>
                         {{ end }}                        
                         {{ if eq .company "GitHub" }}
-                        <div class="mt-4">
+                        <div class="mt-4 space-y-4">
+                            <img src="https://ghchart.rshah.org/1560bd/{{ site.Params.github_username }}" 
+                                 alt="GitHub Contribution Chart" 
+                                 class="w-full rounded-lg border border-border-primary-light dark:border-border-primary-dark">
                             <a href="{{ site.Params.github }}" 
                                class="github-link inline-flex items-center gap-2 text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300 relative">
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
