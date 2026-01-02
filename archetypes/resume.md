@@ -2,7 +2,7 @@
 title: "Resume"
 date: {{ .Date }}
 draft: false
-pdf: "" # Path to PDF file, e.g., "/resume/John_Doe_Resume.pdf"
+pdf: "/resume/Resume_Cullen_Kelley.pdf" # Path to PDF file, e.g., "/resume/John_Doe_Resume.pdf"
 tex: "" # Optional: Path to LaTeX source file, e.g., "/resume/resume.tex"
 download_text: "Download PDF"
 ---

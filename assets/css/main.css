@@ -9,12 +9,12 @@ footer {
 
 /* Social Icons */
 .social-icon {
-    @apply text-text-secondary-light dark:text-text-secondary-dark 
-           hover:text-text-primary-light dark:hover:text-text-primary-dark 
-           bg-bg-tertiary-light dark:bg-bg-tertiary-dark 
+    @apply text-secondary-light dark:text-secondary-dark 
+           hover:text-primary-light dark:hover:text-primary-dark 
+           bg-tertiary-light dark:bg-tertiary-dark 
            p-2 rounded-md border 
-           border-border-secondary-light dark:border-border-secondary-dark 
-           hover:border-border-primary-light dark:hover:border-border-primary-dark 
+           border-secondary-light dark:border-secondary-dark 
+           hover:border-primary-light dark:hover:border-primary-dark 
            transition-all;
 }
 

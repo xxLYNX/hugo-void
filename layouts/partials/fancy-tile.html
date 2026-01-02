@@ -18,7 +18,7 @@
                 <a href="{{ printf "/tags/%s/" (urlize .) }}" class="px-1.5 md:px-2 py-0.5 bg-neutral-700/30 backdrop-blur-sm rounded-md text-[10px] md:text-xs font-medium text-white hover:bg-neutral-600/40 transition-colors duration-200">{{ . }}</a>
                 {{ end }}
             </div>
-            <p class="hidden md:block text-sm text-white mb-3 line-clamp-3 md:line-clamp-4">{{ $item.Params.description }}</p>
+            <p class="hidden md:block text-sm text-white mb-3 line-clamp-3 md:line-clamp-4 bg-neutral-800/70 backdrop-blur-sm p-3 rounded-md border border-neutral-800">{{ $item.Params.description }}</p>
             
             <!-- Action buttons -->
             <div class="flex flex-wrap gap-2">
