@@ -1,9 +1,9 @@
 {{ define "main" }}
 <div class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-5xl font-bold mb-3 text-text-primary-light dark:text-text-primary-dark">{{ .Title }}</h1>
-    <div class="mb-12 bg-bg-primary-light dark:bg-bg-secondary-dark p-8 rounded-lg border border-border-primary-light dark:border-border-primary-dark">
+    <h1 class="text-5xl font-bold mb-3 text-primary-light dark:text-primary-dark">{{ .Title }}</h1>
+    <div class="mb-12 bg-primary-light dark:bg-secondary-dark p-8 rounded-lg border border-primary-light dark:border-primary-dark">
         <div class="intro-section">
-            <div class="text-text-secondary-light dark:text-text-secondary-dark text-3xl prose prose-invert prose-l max-w-none">
+            <div class="text-secondary-light dark:text-secondary-dark text-3xl prose prose-invert prose-l max-w-none">
                 {{ .Content }}
             </div>
             <div class="mt-8 text-sl flex flex-wrap gap-4">
@@ -34,7 +34,7 @@
                 {{ partial "simple-tile.html" (dict "item" . "showGitHub" true "context" $) }}
             {{ end }}
         {{ else }}
-            <div class="text-text-secondary-light dark:text-text-secondary-dark p-6 bg-bg-primary-light dark:bg-bg-secondary-dark rounded-lg border border-border-primary-light dark:border-border-primary-dark">
+            <div class="text-secondary-light dark:text-secondary-dark p-6 bg-primary-light dark:bg-secondary-dark rounded-lg border border-primary-light dark:border-primary-dark">
                 <p class="text-center">No experience data found. Please add some experience entries to your site configuration.</p>
             </div>
         {{ end }}

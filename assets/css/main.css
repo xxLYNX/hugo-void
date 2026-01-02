@@ -166,18 +166,38 @@ html.dark .prose a:hover {
 
 /* Experience page specific styles */
 .stat-box {
-    @apply bg-bg-primary-light dark:bg-bg-tertiary-dark p-4 rounded-lg border border-border-primary-light dark:border-border-primary-dark flex-1 min-w-[120px] text-center transition-all duration-300;
+    @apply bg-transparent p-4 rounded-lg border flex-1 min-w-[120px] text-center transition-all duration-300;
+    border-color: #d4d4d8; /* neutral-300 */
+}
+
+html.dark .stat-box {
+    border-color: #404040; /* neutral-700 */
 }
 
 .stat-box:hover {
-    @apply border-accent-light dark:border-accent-dark bg-bg-primary-light dark:bg-bg-tertiary-dark;
+    @apply bg-transparent;
     transform: translateY(-2px);
+    border-color: #0284c7; /* accent-light */
+}
+
+html.dark .stat-box:hover {
+    border-color: #0ea5e9; /* accent-dark */
 }
 
 .stat-number {
-    @apply text-3xl font-bold text-accent-light dark:text-accent-dark mb-1;
+    @apply text-3xl font-bold mb-1;
+    color: #0284c7; /* accent-light */
+}
+
+html.dark .stat-number {
+    color: #0ea5e9; /* accent-dark */
 }
 
 .stat-label {
-    @apply text-sm text-text-secondary-light dark:text-text-secondary-dark;
+    @apply text-sm;
+    color: #525252; /* text-secondary-light, neutral-600 */
+}
+
+html.dark .stat-label {
+    color: #9ca3af; /* text-secondary-dark, neutral-400 */
 } 
