@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-5xl font-bold text-primary-light dark:text-primary-dark">{{ .Title }}</h1>
+        {{ if .Params.pdf }}
+        <a href="{{ .Params.pdf }}" 
+           download 
+           class="inline-flex items-center gap-2 px-6 py-3 bg-accent-light dark:bg-accent-dark text-white rounded-lg hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            {{ .Params.download_text | default "Download PDF" }}
+        </a>
+        {{ end }}
+    </div>
+
+    {{ if .Content }}
+    <div class="prose prose-lg dark:prose-invert max-w-none mb-8 text-secondary-light dark:text-secondary-dark">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    {{ if .Params.pdf }}
+    <div class="bg-primary-light dark:bg-secondary-dark border border-primary-light dark:border-primary-dark rounded-lg overflow-hidden shadow-lg">
+        <iframe 
+            src="{{ .Params.pdf }}" 
+            class="w-full" 
+            style="height: 1000px; min-height: 80vh;"
+            frameborder="0"
+            title="Resume PDF Viewer">
+        </iframe>
+        <div class="p-4 bg-secondary-light dark:bg-tertiary-dark text-center text-sm text-secondary-light dark:text-secondary-dark">
+            Can't see the PDF? <a href="{{ .Params.pdf }}" class="text-accent-light dark:text-accent-dark hover:underline" download>Download it here</a>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Params.tex }}
+    <div class="mt-8">
+        <a href="{{ .Params.tex }}" 
+           download
+           class="inline-flex items-center gap-2 text-accent-light dark:text-accent-dark hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            Download LaTeX source
+        </a>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
