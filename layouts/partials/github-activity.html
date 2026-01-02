@@ -1,0 +1,14 @@
+{{/* GitHub Activity Tile - Shows contribution chart and profile link */}}
+{{/* Usage: {{ partial "github-activity.html" (dict "context" $) }} */}}
+
+{{ $ctx := .context }}
+{{ $authorData := index $ctx.Site.Data $ctx.Language.Lang "author" }}
+{{ $author := $authorData.author }}
+
+{{ if $author.github_username }}
+<div class="mt-4">
+    <img src="https://ghchart.rshah.org/1560bd/{{ $author.github_username }}" 
+         alt="GitHub Contribution Chart" 
+         class="w-full rounded-lg border border-primary-light dark:border-primary-dark">
+</div>
+{{ end }}
