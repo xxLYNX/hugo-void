@@ -162,4 +162,22 @@ html.dark .prose a {
 
 html.dark .prose a:hover {
     color: #38bdf8;
+}
+
+/* Experience page specific styles */
+.stat-box {
+    @apply bg-bg-primary-light dark:bg-bg-tertiary-dark p-4 rounded-lg border border-border-primary-light dark:border-border-primary-dark flex-1 min-w-[120px] text-center transition-all duration-300;
+}
+
+.stat-box:hover {
+    @apply border-accent-light dark:border-accent-dark bg-bg-primary-light dark:bg-bg-tertiary-dark;
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    @apply text-3xl font-bold text-accent-light dark:text-accent-dark mb-1;
+}
+
+.stat-label {
+    @apply text-sm text-text-secondary-light dark:text-text-secondary-dark;
 } 
