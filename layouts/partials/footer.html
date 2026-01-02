@@ -3,17 +3,11 @@
     <div class="max-w-3xl mx-auto">
         <div class="border-t border-border-primary-light dark:border-border-primary-dark pt-5">
             <div class="flex flex-col items-center justify-center gap-2">
-                {{ $authorData := index site.Data .Language.Lang "author" }}                
-                {{ $author := site.Params }}
-                {{ if $authorData }}
-                    {{ if $authorData.author }}
-                        {{ $author = $authorData.author }}
-                    {{ end }}
-                {{ end }}
-                {{ with $author }}
-                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm ">© {{ now.Format "2006" }} {{ .name }}</p>
-                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm pb-12">{{ T "builtUsing" }} <a href="https://gohugo.io/" target="_blank" class="animated-link text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark">Hugo</a>. {{ T "takeALookAtMy" }} <a href="{{ .github }}" target="_blank" class="animated-link text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark">GitHub</a></p>
-                {{ end }}
+                {{ $lang := .Language.Lang | default "en" }}
+                {{ $authorData := index site.Data $lang "author" }}
+                {{ $author := $authorData.author }}
+                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm ">© {{ now.Format "2006" }} {{ $author.name }}</p>
+                <p class="text-text-secondary-light dark:text-text-secondary-dark text-xm pb-12">{{ T "builtUsing" }} <a href="https://gohugo.io/" target="_blank" class="animated-link text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark">Hugo</a>. {{ T "takeALookAtMy" }} <a href="{{ $author.github }}" target="_blank" class="animated-link text-accent-light dark:text-accent-dark hover:text-text-primary-light dark:hover:text-text-primary-dark">GitHub</a></p>
             </div>
         </div>
     </div>
@@ -22,6 +16,17 @@
 <style>
     footer {
         background: linear-gradient(to bottom, transparent, rgba(17, 24, 39, 0.5));
+    }
+    
+    /* Social Icons */
+    .social-icon {
+        @apply text-text-secondary-light dark:text-text-secondary-dark 
+               hover:text-text-primary-light dark:hover:text-text-primary-dark 
+               bg-bg-tertiary-light dark:bg-bg-tertiary-dark 
+               p-2 rounded-md border 
+               border-border-secondary-light dark:border-border-secondary-dark 
+               hover:border-border-primary-light dark:hover:border-border-primary-dark 
+               transition-all;
     }
     
     .animated-link {
@@ -46,5 +51,83 @@
     }
     html.dark .animated-link::after {
         background-color: #0ea5e9; /* accent-dark (sky-500) */
+    }
+    
+    /* Prose Styles for Blog/Project Pages */
+    .prose {
+        color: #4b5563;
+        font-size: 1.125rem;
+        line-height: 1.75;
+    }
+    html.dark .prose {
+        color: #9ca3af;
+    }
+    .prose h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1f2937;
+    }
+    html.dark .prose h2 {
+        color: #f3f4f6;
+    }
+    .prose h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1f2937;
+    }
+    html.dark .prose h3 {
+        color: #f3f4f6;
+    }
+    .prose p {
+        margin-bottom: 1.25rem;
+    }
+    .prose ul, .prose ol {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+    .prose li {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .prose code {
+        background-color: #f3f4f6;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+    }
+    html.dark .prose code {
+        background-color: #374151;
+    }
+    .prose pre {
+        background-color: #1f2937;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .prose pre code {
+        background-color: transparent;
+        padding: 0;
+        color: #e5e7eb;
+    }
+    .prose a {
+        color: #0284c7;
+        text-decoration: underline;
+        transition: color 0.2s;
+    }
+    .prose a:hover {
+        color: #0369a1;
+    }
+    html.dark .prose a {
+        color: #0ea5e9;
+    }
+    html.dark .prose a:hover {
+        color: #38bdf8;
     }
 </style> 
