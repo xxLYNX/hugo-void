@@ -1,0 +1,16 @@
+{
+  "name": "hugo-void",
+  "version": "1.0.0",
+  "description": "Hugo theme with Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --watch",
+    "dev": "npm run watch:css"
+  },
+  "keywords": ["hugo", "theme", "tailwind"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

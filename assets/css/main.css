@@ -2,11 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: #121212;
-    color: #ffffff;
+/* Footer gradient */
+footer {
+    background: linear-gradient(to bottom, transparent, rgba(17, 24, 39, 0.5));
 }
 
+/* Social Icons */
+.social-icon {
+    @apply text-text-secondary-light dark:text-text-secondary-dark 
+           hover:text-text-primary-light dark:hover:text-text-primary-dark 
+           bg-bg-tertiary-light dark:bg-bg-tertiary-dark 
+           p-2 rounded-md border 
+           border-border-secondary-light dark:border-border-secondary-dark 
+           hover:border-border-primary-light dark:hover:border-border-primary-dark 
+           transition-all;
+}
+
+/* Animated link underline effect */
+.animated-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.animated-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: #0284c7; /* accent-light (sky-600) */
+    transition: width 0.3s ease-in-out;
+}
+
+.animated-link:hover::after {
+    width: 100%;
+}
+
+html.dark .animated-link::after {
+    background-color: #0ea5e9; /* accent-dark (sky-500) */
+}
+
+/* Tech icon effects */
 .tech-icon {
     filter: grayscale(100%) brightness(200%);
     transition: all 0.3s ease;
@@ -16,6 +54,7 @@ body {
     filter: none;
 }
 
+/* Experience timeline */
 .experience-timeline {
     position: relative;
 }
@@ -28,4 +67,99 @@ body {
     bottom: 0;
     width: 2px;
     background-color: #333;
+}
+
+/* Prose styles for blog/project content */
+.prose {
+    color: #4b5563;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+html.dark .prose {
+    color: #9ca3af;
+}
+
+.prose h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+html.dark .prose h2 {
+    color: #f3f4f6;
+}
+
+.prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+}
+
+html.dark .prose h3 {
+    color: #f3f4f6;
+}
+
+.prose p {
+    margin-bottom: 1.25rem;
+}
+
+.prose ul,
+.prose ol {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.prose li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.prose code {
+    background-color: #f3f4f6;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+html.dark .prose code {
+    background-color: #374151;
+}
+
+.prose pre {
+    background-color: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #e5e7eb;
+}
+
+.prose a {
+    color: #0284c7;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.prose a:hover {
+    color: #0369a1;
+}
+
+html.dark .prose a {
+    color: #0ea5e9;
+}
+
+html.dark .prose a:hover {
+    color: #38bdf8;
 } 
