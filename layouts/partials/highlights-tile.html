@@ -1,0 +1,23 @@
+{{/* Highlights Tile Partial - Stats and intro section */}}
+{{/* Usage: {{ partial "highlights-tile.html" (dict "content" .Content "stats" $stats) }} */}}
+
+{{ $content := .content }}
+{{ $stats := .stats }}
+
+<div class="mb-12 bg-primary-light dark:bg-secondary-dark p-8 rounded-lg border border-primary-light dark:border-primary-dark">
+    <div class="intro-section">
+        <div class="text-secondary-light dark:text-secondary-dark text-3xl prose prose-invert prose-l max-w-none">
+            {{ $content }}
+        </div>
+        {{ if $stats }}
+        <div class="mt-8 text-sl flex flex-wrap gap-4">
+            {{ range $stats }}
+            <div class="stat-box">
+                <div class="stat-number">{{ .number }}</div>
+                <div class="stat-label">{{ .label }}</div>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
