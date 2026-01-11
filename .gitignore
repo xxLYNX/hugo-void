@@ -1,2 +1,18 @@
+# Hugo build lock file
+.hugo_build.lock
+
+# Node modules and build artifacts
+node_modules/
+package-lock.json
+
+# OS files
 .DS_Store
+Thumbs.db
 images/.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

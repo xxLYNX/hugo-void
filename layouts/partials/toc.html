@@ -13,22 +13,37 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (headings.length === 0 || tocLinks.length === 0) return;
     
-    // Create intersection observer
+    // Function to set active link
+    function setActiveLink(id) {
+        tocLinks.forEach(link => link.classList.remove('toc-active'));
+        const activeLink = document.querySelector(`#toc a[href="#${id}"]`);
+        if (activeLink) {
+            activeLink.classList.add('toc-active');
+        }
+    }
+    
+    // Set first heading as active by default
+    if (headings[0]) {
+        setActiveLink(headings[0].getAttribute('id'));
+    }
+    
+    // Add click handlers to TOC links
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const id = href.substring(1);
+                setActiveLink(id);
+            }
+        });
+    });
+    
+    // Create intersection observer for scroll tracking
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-                
-                // Remove active from all links
-                tocLinks.forEach(link => {
-                    link.classList.remove('toc-active');
-                });
-                
-                // Add active to current link
-                const activeLink = document.querySelector(`#toc a[href="#${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('toc-active');
-                }
+                setActiveLink(id);
             }
         });
     }, {

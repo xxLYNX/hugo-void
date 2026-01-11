@@ -1,18 +1,14 @@
 {{ define "main" }}
 <article class="w-full md:w-3/4 lg:w-1/2 mx-auto px-4 py-12">
     <div class="mb-8">
-        <a href="{{ "blogs/" | relLangURL }}" class="inline-flex items-center text-accent-light dark:text-accent-dark hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200 mb-6">
+        <a href="{{ "blogs/" | relLangURL }}" class="inline-flex items-center text-accent-light dark:text-accent-dark hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blog
         </a>
-    </div>
-    
-    <header class="mb-12">
         <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary-light dark:text-primary-dark">{{ .Title }}</h1>
-        
-        <div class="flex flex-wrap items-center gap-4 text-secondary-light dark:text-secondary-dark text-sm mb-6">
+        <div class="flex items-center gap-4 text-secondary-light dark:text-secondary-dark text-sm mb-6">
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             {{ if ne .Date .Lastmod }}
             <span>•</span>
@@ -38,10 +34,15 @@
             {{ end }}
         </div>
         {{ end }}
-    </header>
+    </div>
     
     <div class="prose prose-lg prose-neutral dark:prose-invert max-w-none">
         {{ .Content }}
     </div>
 </article>
+
+<!-- Fixed TOC sidebar - overlays in right margin on XL+ screens -->
+<aside class="hidden xl:block fixed top-32 right-[calc((100vw-640px)/4-280px/2)] w-64 max-h-[calc(100vh-10rem)] overflow-y-auto">
+    {{ partial "toc.html" . }}
+</aside>
 {{ end }}
