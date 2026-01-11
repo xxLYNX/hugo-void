@@ -1,0 +1,43 @@
+{{ if .TableOfContents }}
+<nav id="toc" class="toc">
+    <h3 class="text-lg font-semibold mb-4 text-primary-light dark:text-primary-dark">On this page</h3>
+    <div class="toc-content text-sm">
+        {{ .TableOfContents }}
+    </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const headings = document.querySelectorAll('article h2[id], article h3[id]');
+    const tocLinks = document.querySelectorAll('#toc a');
+    
+    if (headings.length === 0 || tocLinks.length === 0) return;
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Remove active from all links
+                tocLinks.forEach(link => {
+                    link.classList.remove('toc-active');
+                });
+                
+                // Add active to current link
+                const activeLink = document.querySelector(`#toc a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('toc-active');
+                }
+            }
+        });
+    }, {
+        rootMargin: '-100px 0px -66%',
+        threshold: 1.0
+    });
+    
+    // Observe all headings
+    headings.forEach(heading => observer.observe(heading));
+});
+</script>
+{{ end }}

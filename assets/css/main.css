@@ -115,6 +115,14 @@ html.dark .prose h3 {
     padding-left: 1.5rem;
 }
 
+.prose ul {
+    list-style-type: disc;
+}
+
+.prose ol {
+    list-style-type: decimal;
+}
+
 .prose li {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -162,6 +170,68 @@ html.dark .prose a {
 
 html.dark .prose a:hover {
     color: #38bdf8;
+}
+
+/* Table of Contents */
+.toc {
+    padding: 1rem;
+    border-left: 2px solid #e5e7eb;
+}
+
+html.dark .toc {
+    border-left-color: #404040;
+}
+
+.toc-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-content ul ul {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.toc-content li {
+    margin: 0.5rem 0;
+}
+
+.toc-content a {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    color: #525252;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+html.dark .toc-content a {
+    color: #b6bcbf;
+}
+
+.toc-content a:hover {
+    color: #0284c7;
+    background-color: #f3f4f6;
+}
+
+html.dark .toc-content a:hover {
+    color: #0ea5e9;
+    background-color: #262626;
+}
+
+.toc-content a.toc-active {
+    color: #0284c7;
+    background-color: #e0f2fe;
+    font-weight: 600;
+    border-left: 2px solid #0284c7;
+    padding-left: calc(0.5rem - 2px);
+}
+
+html.dark .toc-content a.toc-active {
+    color: #0ea5e9;
+    background-color: #1a1a1a;
+    border-left-color: #0ea5e9;
 }
 
 /* Experience page specific styles */
