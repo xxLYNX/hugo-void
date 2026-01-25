@@ -1,83 +1,44 @@
-<h1 align=center>Hugo Noir | <a href="https://pranamshetty.dev" rel="nofollow">Demo</a></h1>
+# Hugo Void
 
 <h4 align=center>🌑 Dark | ⚪️ Light | 🔍 Minimalist | 📱 Responsive | ⚡ Fast</h4>
-<br>
-
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/prxshetty/hugo-noir)](https://github.com/prxshetty/hugo-noir/releases/latest)
-[![View Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=>=v0.92.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.92.0)
-[![GitHub stars](https://img.shields.io/github/stars/prxshetty/hugo-noir?style=social)](https://github.com/prxshetty/hugo-noir/stargazers)
-[![Hugo Themes](https://img.shields.io/badge/Hugo--Themes-@Dark_Noir-blue)](https://themes.gohugo.io/themes/hugo-noir/)
 
 ---
 
-A clean, minimalistic theme for Hugo with a focus on readability, simplicity, and multilingual support.
-
-![Hugo Noir Thumbnail](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/tn.png)
+A clean, minimalistic Hugo theme with a focus on readability, simplicity, and multilingual support. Features an animated tech stack carousel and modern design.
 
 ## Features
 
-- Responsive design
+- Responsive design with mobile-first approach
 - Built with Tailwind CSS
 - Clean and minimalist aesthetic
 - Light & Dark mode support (manual toggle and OS-aware)
 - Fast loading times
 - SEO-friendly
-- Blog-ready
-- Multilingual support (En, Es, Fr configured by default)
+- Blog-ready with markdown support
+- Multilingual support (i18n ready)
 - Enhanced mobile navigation
-- Local time display
 - Devicon integration for tech stack display
+- Animated dual-row tech carousel (opposite scrolling directions)
 - Configurable region display for experiences
-- Subtle hyperlink indicators (SVGs)
-- Engaging criss-cross carousel animations
-
-## Light & Dark Mode Showcase
-
-Here's a glimpse of the theme in both light and dark modes:
-
-**Homepage (Dark Mode - Primary):**
-![Hugo Noir Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/screenshot.png)
-
-**Homepage (Light Mode):**
-![Hugo Noir Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/home_light.png)
-
-**Projects Page (Dark Mode):**
-![Hugo Noir Projects Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/project_dark.png)
-
-**Projects Page (Light Mode):**
-![Hugo Noir Projects Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/project_light.png)
-
-**Experience Page (Dark Mode):**
-![Hugo Noir Experience Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/experience_dark.png)
-
-**Experience Page (Light Mode):**
-![Hugo Noir Experience Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/experience_light.png)
-
-**Contact Page (Dark Mode):**
-![Hugo Noir Contact Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/contact_dark.png)
-
-**Contact Page (Light Mode):**
-![Hugo Noir Contact Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/contact_light.png)
+- Data-driven content through Hugo data files
 
 ## Installation
 
-Ensure you have Hugo installed (Extended version, v0.92.0 or newer is recommended).
+Ensure you have Hugo Extended version v0.92.0 or newer installed.
 
-For a quick start and to see a full configuration example, you can refer to the `hugo.example.toml` file included in the theme's root directory. You can copy this file to your site's root as `hugo.toml` (or `config.toml`) and customize it.
-
-### Option 1: Clone Repository (Recommended for theme development)
+### Add as a Git Submodule
 
 ```bash
 # From your Hugo site's root directory
-git clone https://github.com/prxshetty/hugo-noir.git themes/hugo-noir
+git submodule add <your-repo-url> themes/hugo-void
+git submodule update --init --recursive
 ```
 
-### Option 2: Add as a Git Submodule (Recommended for using the theme in your project)
+### Clone Repository
 
 ```bash
 # From your Hugo site's root directory
-git submodule add https://github.com/prxshetty/hugo-noir.git themes/hugo-noir
+git clone <your-repo-url> themes/hugo-void
 ```
 Then, update your submodules:
 ```bash
@@ -86,131 +47,96 @@ git submodule update --init --recursive
 
 ## Configuration
 
-1.  **Set the theme in your site's `hugo.toml` (or `config.toml`):**
+1.  **Set the theme in your site's `hugo.toml`:**
 
     ```toml
-    theme = "hugo-noir"
+    theme = "hugo-void"
     ```
 
-2.  **Hugo Version Compatibility:**
+2.  **Hugo Version Requirements:**
 
-    This theme requires:
-    *   Hugo **Extended** version.
-    *   Minimum version: **0.92.0** (recommended).
-
-    To ensure compatibility, especially if you plan to submit this theme to the Hugo Themes showcase, you can specify Hugo version requirements within the theme's own `hugo.toml` or `config.toml` (create one at `themes/hugo-noir/hugo.toml` if it doesn't exist) or more commonly in a `theme.toml` file at the root of the theme.
-
-    Example for `themes/hugo-noir/theme.toml` (see "Theme Metadata" section below):
-    ```toml
-    [module]
-      [module.hugoVersion]
-        extended = true
-        min = "0.92.0"
-        # max = "0.1xx.x" # Optionally specify a max version
-    ```
+    This theme requires Hugo **Extended** version 0.92.0 or higher.
 
 3.  **Multilingual Setup (Optional):**
 
-    This theme is pre-configured for English (en), Spanish (es), and French (fr). To enable multilingual mode in your site, configure your main `hugo.toml` like this:
+    The theme supports multilingual sites through Hugo's i18n system. Configure your main `hugo.toml`:
 
     ```toml
     defaultContentLanguage = "en"
-    defaultContentLanguageInSubdir = true # Recommended for clearer URLs like /en/blog, /es/blog
+    defaultContentLanguageInSubdir = true
 
     [languages]
       [languages.en]
         languageName = "English"
-        title = "Your Site Title (English)"
+        title = "Your Site Title"
         weight = 1
-        contentDir = "content/en" # Ensure you have this directory
+        contentDir = "content/en"
         [languages.en.menu]
           [[languages.en.menu.main]]
             name = "About"
             pageRef = "/about"
             weight = 1
-          # ... other English menu items
-      [languages.es]
-        languageName = "Español"
-        title = "Your Site Title (Spanish)"
-        weight = 2
-        contentDir = "content/es" # Ensure you have this directory
-        [languages.es.menu]
-          [[languages.es.menu.main]]
-            name = "Sobre Mí" # Translated name
-            pageRef = "/about" # pageRef should ideally point to the same logical page
-            weight = 1
-          # ... other Spanish menu items
-      [languages.fr]
-        languageName = "Français"
-        title = "Your Site Title (French)"
-        weight = 3
-        contentDir = "content/fr" # Ensure you have this directory
-        [languages.fr.menu]
-          [[languages.fr.menu.main]]
-            name = "À Propos" # Translated name
-            pageRef = "/about"
-            weight = 1
-          # ... other French menu items
-
-    # Remember to create content in the respective contentDir folders (e.g., content/en/about.md, content/es/about.md)
-    ```
-    The theme's `i18n` folder (`themes/hugo-noir/i18n/`) contains the translation strings.
-
-4.  **Params for `hugo.toml` (and Data Files):**
-
-    The theme uses parameters from your site's `hugo.toml` under `[params]` for common information like your name and social links. Ensure these are set. Example:
-    ```toml
-    [params]
-      name = "Your Name"
-      location = "Your Location"
-      description = "Description ..."
-      profile_image = "/images/your-profile.jpg" # Place in your site's static/images/
-      # Social links
-      github = "https://github.com/yourusername"
-      twitter = "https://twitter.com/yourusername"
-      linkedin = "https://linkedin.com/in/yourusername"
-      email = "your.email@example.com"
-      # ... other params ...
+          [[languages.en.menu.main]]
+            name = "Projects"
+            pageRef = "/projects"
+            weight = 2
     ```
 
-    **Site-Specific Data (Author, Experience, etc.):**
+4.  **Data Files Configuration:**
 
-    For language-specific information like author details and your professional experience, this theme utilizes Hugo's data files. You should create these in your site's `data` directory, typically organized by language.
+    The theme uses Hugo data files for flexible content management. Create these in your site's `data/<language>/` directory:
 
-    *   **Author Information:** Create files like `data/en/author.toml`, `data/es/author.toml`. Example for `data/en/author.toml`:
+    *   **Author Information** (`data/en/author.toml`):
         ```toml
         [author]
           name = "Your Name"
           location = "Your Location"
-          description = "Description ..."
-          profile_image = "/images/your-profile.jpg" # Place in your site's static/images/
-          # Social links
-          github = "https://github.com/yourusername"
-          twitter = "https://twitter.com/yourusername"
-          linkedin = "https://linkedin.com/in/yourusername"
+          description = "Your bio..."
+          profile_image = "/images/profile.jpg"
+          github = "https://github.com/username"
+          twitter = "https://twitter.com/username"
+          linkedin = "https://linkedin.com/in/username"
           email = "your.email@example.com"
-          # ... other social links ...
         ```
-    *   **Tech Carousel:** Create a file like `data/en/tech.toml` to customize items on the tech stack carousel. The icon class pulls from [Devicon](https://devicon.dev/). Example `data/en/tech.toml`:
+    *   **Tech Carousel:** Create a file like `data/en/tech.toml` to customize items on the tech stack carousel. The icon class pulls from [Devicon](https://devicon.dev/). 
+    
+        The carousel features two rows that scroll in opposite directions (row1 scrolls left-to-right, row2 scrolls right-to-left), creating an engaging visual effect. The animation speed automatically adjusts based on the number of items (5 seconds per item), so adding more items naturally extends the loop duration while maintaining smooth scrolling. The carousel also pauses on hover for better readability.
+        
+        Example `data/en/tech.toml`:
         ```toml
-        # The 'row1' array populates the top carousel
+        # Tech stack carousel - row1 scrolls left, row2 scrolls right
+        # Icons from https://devicon.dev/
+        
+        # Top carousel row (scrolls left-to-right)
         row1 = [
           { icon = "devicon-python-plain", name = "Python" },
-          { icon = "devicon-go-plain", name = "Go" },
           { icon = "devicon-javascript-plain", name = "JavaScript" },
-          # ... other tech stack items...
-          { icon = "devicon-ruby-plain", name = "Ruby" }
+          { icon = "devicon-typescript-plain", name = "TypeScript" },
+          { icon = "devicon-go-plain", name = "Go" },
+          { icon = "devicon-rust-original", name = "Rust" },
+          { icon = "devicon-java-plain", name = "Java" },
+          { icon = "devicon-cplusplus-plain", name = "C++" },
+          { icon = "devicon-html5-plain", name = "HTML5" }
         ]
-
-        # The 'row2' array populates the bottom carousel
+        
+        # Bottom carousel row (scrolls right-to-left)
         row2 = [
+          { icon = "devicon-react-original", name = "React" },
+          { icon = "devicon-nodejs-plain", name = "Node.js" },
           { icon = "devicon-docker-plain", name = "Docker" },
+          { icon = "devicon-kubernetes-plain", name = "Kubernetes" },
           { icon = "devicon-postgresql-plain", name = "PostgreSQL" },
-          { icon = "devicon-nginx-original", name = "Nginx" },
-          # ... other tech stack items... 
-          { icon = "devicon-nodejs-plain", name = "Node.js" }
+          { icon = "devicon-mongodb-plain", name = "MongoDB" },
+          { icon = "devicon-redis-plain", name = "Redis" },
+          { icon = "devicon-nginx-original", name = "Nginx" }
         ]
         ```
+        
+        **Tips:**
+        - Browse [Devicon](https://devicon.dev/) for available icons and their class names
+        - Each row can have a different number of items
+        - Animation duration = number of items × 5 seconds per item
+        - Rows don't need to be balanced in length
 
     *   **Experience Data:** The "Experience" section on your site (using the `experience.html` layout) is populated from a data file. Create a file such as `data/en/experience.toml` (or `.yaml`/`.json`). Each entry should detail a role or position.
 
