@@ -45,6 +45,52 @@ Then, update your submodules:
 git submodule update --init --recursive
 ```
 
+## Development
+
+### Initial Setup
+
+Install Tailwind CSS dependencies in the theme directory:
+
+```bash
+cd themes/hugo-void
+npm install
+```
+
+### Development Workflow
+
+For development with live reload, you need to run **two processes simultaneously**:
+
+**Terminal 1 - Tailwind CSS watch mode:**
+```bash
+cd themes/hugo-void
+npm run dev
+# or: npm run watch:css
+```
+
+**Terminal 2 - Hugo development server:**
+```bash
+# From project root
+hugo server -D
+```
+
+The Tailwind watch mode automatically rebuilds CSS when you modify templates or content, while Hugo's server provides live reload for all changes.
+
+### Production Build
+
+For production deployment:
+
+```bash
+# Build Tailwind CSS (from theme directory)
+cd themes/hugo-void
+npm run build:css
+
+# Build Hugo site (from project root)
+cd ../..
+hugo
+```
+
+The compiled site will be in the `public/` directory.
+
 ## Configuration
 
 1.  **Set the theme in your site's `hugo.toml`:**
