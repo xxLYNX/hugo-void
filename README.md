@@ -63,8 +63,8 @@ For development with live reload, you need to run **two processes simultaneously
 **Terminal 1 - Tailwind CSS watch mode:**
 ```bash
 cd themes/hugo-void
-npm run dev
-# or: npm run watch:css
+pnpm run dev
+# or: pnpm run watch:css
 ```
 
 **Terminal 2 - Hugo development server:**
@@ -82,7 +82,7 @@ For production deployment:
 ```bash
 # Build Tailwind CSS (from theme directory)
 cd themes/hugo-void
-npm run build:css
+pnpm run build:css
 
 # Build Hugo site (from project root)
 cd ../..
