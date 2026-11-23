@@ -53,7 +53,7 @@ Install Tailwind CSS dependencies in the theme directory:
 
 ```bash
 cd themes/hugo-void
-npm install
+pnpm install --frozen-lockfile
 ```
 
 ### Development Workflow
